@@ -35,6 +35,14 @@
     "plugins": {
         "shell": {
             "open": "^https://github\\.com/rzmk"
+        },
+        "updater": {
+            "active": true,
+            "endpoints": [
+                "https://github.com/rzmk/fformat/releases/latest/download/latest.json"
+            ],
+            "dialog": true,
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE5NkYxRUMxOTBFRkE1REQKUldUZHBlK1F3UjV2R1ZTUStEVXRBVE1NdnN6YUZIWFhJMUZuUzFwWTlCeDRCVzU1d1VsNEVkeWkK"
         }
     },
     "identifier": "com.fformat.dev",
