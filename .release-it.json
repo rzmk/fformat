@@ -1,0 +1,32 @@
+{
+    "git": {
+        "requireBranch": "main",
+        "commitMessage": "chore: release v${version}"
+    },
+    "hooks": {
+        "after:bump": "pnpx auto-changelog --commit-limit false --template keepachangelog"
+    },
+    "github": {
+        "release": true,
+        "releaseName": "v${version}"
+    },
+    "npm": {
+        "publish": false,
+        "ignoreVersion": true
+    },
+    "plugins": {
+        "@release-it/conventional-changelog": {
+            "preset": {
+                "name": "angular"
+            },
+            "infile": "CHANGELOG.md"
+        },
+        "@release-it/bumper": {
+            "in": "package.json",
+            "out": {
+                "file": "src-tauri/tauri.conf.json",
+                "path": "package.version"
+            }
+        }
+    }
+}
