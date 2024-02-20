@@ -19,7 +19,7 @@ A desktop app integrated with Google's deep learning model [Magika](https://gith
 
 -   **Powered by a deep learning model from Google's Magika team**
 -   **Run offline locally:** Once you've installed fformat, you may run it without an internet connection.
--   **Interactive data table**: After magika detects potential file content types for all of your files, you may view more info about the results.
+-   **Interactive data table**: After Magika detects potential file content types for all of your files, you may view more info about the results.
 -   **Organized metadata:** Learn about your file's path, potential file content types, and score representing a probability that the file content types is as expected.
 -   **Drag & drop files:** Choose between dropping one or more files simply dragging and dropping them into fformat.
 -   **Light & dark themes:** Toggle your theme by clicking on the sun and moon icon.

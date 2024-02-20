@@ -90,7 +90,7 @@ const MagikaProcess = () => {
                         fformat
                     </h2>
                     <p className="text-md w-fit border-b text-muted-foreground">
-                        Examine file formats
+                        Identify potential file content types
                     </p>
                 </div>
                 <div className="mb-4">

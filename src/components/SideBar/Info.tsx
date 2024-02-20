@@ -26,13 +26,17 @@ const Settings = () => {
                 <DialogHeader>
                     <DialogTitle>fformat</DialogTitle>
                     <p className="text-sm text-muted-foreground">
-                        Examine file formats on your local device.
+                        Identify potential file content types on your local
+                        device.
                     </p>
                     <Separator />
                     <ul className="list-disc text-sm text-muted-foreground ml-4 mt-2">
-                        <li>Not all content types are supported.</li>
                         <li>
-                            Built with magika, Tauri, shadcn/ui, Next.js, Rust,
+                            Not all content types are supported, and inferences
+                            may be inaccurate.
+                        </li>
+                        <li>
+                            Built with Magika, Tauri, shadcn/ui, Next.js, Rust,
                             & TypeScript.
                         </li>
                     </ul>
