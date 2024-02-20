@@ -21,9 +21,9 @@ tauri-build = { version = "2.0.0-beta.2", features = [] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "2.0.0-beta.3", features = [] }
-tauri-plugin-shell = { git = "https://github.com/tauri-apps/plugins-workspace.git", rev = "a31ef8e67e25d233cf463efb65428d7e0893e404" }
-tauri-plugin-fs = { git = "https://github.com/tauri-apps/plugins-workspace.git", rev = "a31ef8e67e25d233cf463efb65428d7e0893e404" }
-tauri-plugin-dialog = { git = "https://github.com/tauri-apps/plugins-workspace.git", rev = "a31ef8e67e25d233cf463efb65428d7e0893e404" }
+tauri-plugin-shell = { git = "https://github.com/tauri-apps/plugins-workspace.git", branch = "chore/tauri-beta-3" }
+tauri-plugin-fs = { git = "https://github.com/tauri-apps/plugins-workspace.git", branch = "chore/tauri-beta-3" }
+tauri-plugin-dialog = { git = "https://github.com/tauri-apps/plugins-workspace.git", branch = "chore/tauri-beta-3" }
 
 [profile.release]
 panic = "abort" # Strip expensive panic clean-up logic

@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
 import {
     ColumnDef,
     ColumnFiltersState,
@@ -11,6 +9,7 @@ import {
     getPaginationRowModel,
     useReactTable,
 } from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
     Table,
@@ -20,8 +19,19 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import { DataTableViewOptions } from "@/components/DT/DataTableViewOptions";
+import { LucideScanSearch } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -33,6 +43,7 @@ export function DataTable<TData, TValue>({
     data,
 }: DataTableProps<TData, TValue>) {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const [searchColumn, setSearchColumn] = useState("label");
     const table = useReactTable({
         data,
         columns,
@@ -47,22 +58,56 @@ export function DataTable<TData, TValue>({
 
     return (
         <div>
-            {" "}
-            <div className="flex items-center gap-8 py-4">
-                <Input
-                    placeholder="Search through labels..."
-                    value={
-                        (table
-                            .getColumn("label")
-                            ?.getFilterValue() as string) ?? ""
-                    }
-                    onChange={(event) =>
-                        table
-                            .getColumn("label")
-                            ?.setFilterValue(event.target.value)
-                    }
-                    className="max-w-sm"
-                />
+            <div className="flex justify-between gap-8 py-4">
+                <div className="flex gap-2">
+                    <Input
+                        placeholder={`Search column '${
+                            columns.filter(
+                                (column) => column.id === searchColumn
+                            )[0].header
+                        }'...`}
+                        value={
+                            table
+                                .getColumn(searchColumn)
+                                ?.getFilterValue() as string
+                        }
+                        onChange={(event) =>
+                            table
+                                .getColumn(searchColumn)
+                                ?.setFilterValue(event.target.value)
+                        }
+                        className="max-w-sm"
+                    />
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="icon">
+                                <LucideScanSearch strokeWidth={1.25} />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuLabel>Search Column</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuRadioGroup
+                                defaultValue={searchColumn}
+                                value={searchColumn}
+                                onValueChange={setSearchColumn}
+                            >
+                                {columns
+                                    .filter(
+                                        (column) => column.id && column.header
+                                    )
+                                    .map((column, index) => (
+                                        <DropdownMenuRadioItem
+                                            key={index}
+                                            value={column.id!}
+                                        >
+                                            {column.header!.toString()}
+                                        </DropdownMenuRadioItem>
+                                    ))}
+                            </DropdownMenuRadioGroup>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
                 <DataTableViewOptions table={table} />
             </div>
             <div className="rounded-md border">
@@ -96,7 +141,10 @@ export function DataTable<TData, TValue>({
                                     }
                                 >
                                     {row.getVisibleCells().map((cell: any) => (
-                                        <TableCell key={cell.id} className="text-left">
+                                        <TableCell
+                                            key={cell.id}
+                                            className="text-left"
+                                        >
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()

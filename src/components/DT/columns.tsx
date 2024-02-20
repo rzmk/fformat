@@ -11,14 +11,17 @@ export type Prediction = {
 export const columns: ColumnDef<Prediction>[] = [
     {
         accessorKey: "path",
+        id: "path",
         header: "Path",
     },
     {
         accessorKey: "label",
+        id: "label",
         header: "Label",
     },
     {
         accessorKey: "score",
+        id: "score",
         header: "Score",
     },
 ];

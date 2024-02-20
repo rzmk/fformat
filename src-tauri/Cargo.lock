@@ -3842,7 +3842,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-dialog"
 version = "2.0.0-beta.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace.git?rev=a31ef8e67e25d233cf463efb65428d7e0893e404#a31ef8e67e25d233cf463efb65428d7e0893e404"
+source = "git+https://github.com/tauri-apps/plugins-workspace.git?branch=chore/tauri-beta-3#4709c343bcc0342b20d241ad16a1fe405ce7e182"
 dependencies = [
  "glib 0.16.9",
  "log",
@@ -3859,7 +3859,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-fs"
 version = "2.0.0-beta.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace.git?rev=a31ef8e67e25d233cf463efb65428d7e0893e404#a31ef8e67e25d233cf463efb65428d7e0893e404"
+source = "git+https://github.com/tauri-apps/plugins-workspace.git?branch=chore/tauri-beta-3#4709c343bcc0342b20d241ad16a1fe405ce7e182"
 dependencies = [
  "anyhow",
  "glob",
@@ -3877,7 +3877,7 @@ dependencies = [
 [[package]]
 name = "tauri-plugin-shell"
 version = "2.0.0-beta.0"
-source = "git+https://github.com/tauri-apps/plugins-workspace.git?rev=a31ef8e67e25d233cf463efb65428d7e0893e404#a31ef8e67e25d233cf463efb65428d7e0893e404"
+source = "git+https://github.com/tauri-apps/plugins-workspace.git?branch=chore/tauri-beta-3#4709c343bcc0342b20d241ad16a1fe405ce7e182"
 dependencies = [
  "encoding_rs",
  "log",
