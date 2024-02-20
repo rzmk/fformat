@@ -34,7 +34,7 @@
     },
     "plugins": {
         "shell": {
-            "open": "https://github\\.com/rzmk/fformat"
+            "open": "^https://github\\.com/rzmk"
         }
     },
     "identifier": "com.fformat.dev",
