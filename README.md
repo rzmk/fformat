@@ -28,7 +28,7 @@ A desktop app integrated with Google's deep learning model [Magika](https://gith
 ## 📚 Tech Stack
 
 -   [Magika](https://github.com/google/magika) - Deep learning model (using JavaScript browser API) from Google
--   [Tauri v2](https://beta.tauri.app) - Desktop/Mobile app framework
+-   [Tauri v2 Beta](https://beta.tauri.app) - Desktop/Mobile app framework
 -   [Next.js](https://nextjs.org/) - Web framework built with React
 -   [TypeScript](https://www.typescriptlang.org/) - Programming language
 -   [Rust](https://www.rust-lang.org/) - Programming language
@@ -48,7 +48,7 @@ Contributions are welcome! If you have any ideas, fixes, or suggestions, please 
 
 Some documentation that may be useful include:
 
--   [Tauri v2 docs](https://beta.tauri.app)
+-   [Tauri v2 Beta docs](https://beta.tauri.app)
 -   [shadcn/ui docs](https://ui.shadcn.com/docs)
 -   [Magika repo](https://github.com/google/magika)
 
