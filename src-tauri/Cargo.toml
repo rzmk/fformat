@@ -3,7 +3,6 @@ name = "fformat"
 version = "0.1.0"
 description = "Potential file content type identifier."
 authors = ["rzmk"]
-license = ""
 repository = "https://github.com/rzmk/fformat"
 edition = "2021"
 rust-version = "1.70"
