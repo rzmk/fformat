@@ -35,7 +35,7 @@
         "@release-it/conventional-changelog": "^8.0.1",
         "@tauri-apps/cli": "2.0.0-beta.1",
         "@types/node": "^20.11.20",
-        "@types/react": "^18.2.58",
+        "@types/react": "^18.2.59",
         "@types/react-dom": "^18.2.19",
         "autoprefixer": "^10.4.17",
         "clsx": "^2.1.0",
