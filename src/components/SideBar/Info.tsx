@@ -11,23 +11,38 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { open } from "@tauri-apps/plugin-shell";
 
 const Settings = () => {
     return (
         <Dialog>
-            <DialogTrigger asChild>
+            <DialogTrigger>
                 {/* <SettingsIcon strokeWidth={1.25} /> */}
-                <Button variant="ghost" size="icon">
-                    <Info strokeWidth={1.25} />
-                </Button>
+                <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                                <Info strokeWidth={1.25} />
+                                <span className="sr-only">About fformat</span>
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side="right">
+                            About fformat
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>fformat</DialogTitle>
                     <p className="text-sm text-muted-foreground">
-                        Identify potential file content types on your local
-                        device.
+                        Identify potential file content types on your device.
                     </p>
                     <Separator />
                     <ul className="list-disc text-sm text-muted-foreground ml-4 mt-2">

@@ -19,22 +19,19 @@ const MagikaProcess = () => {
 
     useEffect(() => {
         if (loading) return;
-        const unlisten = listen(
-            "tauri://file-drop",
-            async ({ payload }: any) => {
-                setLoading(true);
-                const filepaths: string[] = payload.paths;
-                const filepredictions: any[] = [];
+        listen("tauri://file-drop", async ({ payload }: any) => {
+            setLoading(true);
+            const filepaths: string[] = payload.paths;
+            const filepredictions: any[] = [];
 
-                for await (const filepath of filepaths) {
-                    const prediction = await getPrediction(filepath);
-                    filepredictions.push(prediction);
-                }
-
-                setPredictions(filepredictions);
-                setLoading(false);
+            for await (const filepath of filepaths) {
+                const prediction = await getPrediction(filepath);
+                filepredictions.push(prediction);
             }
-        );
+
+            setPredictions(filepredictions);
+            setLoading(false);
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -68,7 +65,6 @@ const MagikaProcess = () => {
             }
             setPredictions(filePredictions);
         } else if (selected === null) {
-            // user cancelled the selection
             console.log("User cancelled selection");
         } else {
             // user selected a single file
@@ -110,7 +106,11 @@ const MagikaProcess = () => {
                     </p>
                 </div>
                 {predictions.length > 0 && (
-                    <DataTable columns={columns} data={predictions} />
+                    <DataTable
+                        columns={columns}
+                        data={predictions}
+                        setData={setPredictions}
+                    />
                 )}
             </div>
         </div>

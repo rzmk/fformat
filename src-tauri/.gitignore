@@ -2,4 +2,6 @@
 # will have compiled files and executables
 /target/
 /gen/schemas
+
+# personal utility for cargo deny
 deny.toml

@@ -29,18 +29,26 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
 import { DataTableViewOptions } from "@/components/DT/DataTableViewOptions";
-import { LucideScanSearch } from "lucide-react";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { LucideScanSearch, Trash2 } from "lucide-react";
+import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
+    setData: React.Dispatch<React.SetStateAction<TData[]>>;
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    setData,
 }: DataTableProps<TData, TValue>) {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [searchColumn, setSearchColumn] = useState("label");
@@ -79,10 +87,24 @@ export function DataTable<TData, TValue>({
                         className="max-w-sm"
                     />
                     <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="outline" size="icon">
-                                <LucideScanSearch strokeWidth={1.25} />
-                            </Button>
+                        <DropdownMenuTrigger>
+                            <TooltipProvider delayDuration={0}>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <Button variant="outline" size="icon">
+                                            <LucideScanSearch
+                                                strokeWidth={1.25}
+                                            />
+                                            <span className="sr-only">
+                                                Choose a column to search
+                                            </span>
+                                        </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        Choose a column to search
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuLabel>Search Column</DropdownMenuLabel>
@@ -107,6 +129,21 @@ export function DataTable<TData, TValue>({
                             </DropdownMenuRadioGroup>
                         </DropdownMenuContent>
                     </DropdownMenu>
+                    <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button
+                                    variant="destructive"
+                                    size="icon"
+                                    onClick={() => setData([])}
+                                >
+                                    <Trash2 strokeWidth={1.25} />
+                                    <span className="sr-only">Clear table</span>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Clear table</TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
                 </div>
                 <DataTableViewOptions table={table} />
             </div>
