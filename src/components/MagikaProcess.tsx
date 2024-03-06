@@ -3,12 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/loader";
 
-//@ts-ignore
 import { Magika } from "magika";
 import { listen } from "@tauri-apps/api/event";
 import { useEffect, useState } from "react";
 import { readFile } from "@tauri-apps/plugin-fs";
-//@ts-ignore
 import { open } from "@tauri-apps/plugin-dialog";
 import { columns } from "@/components/DT/columns";
 import { DataTable } from "@/components/DT/data-table";
@@ -40,9 +38,13 @@ const MagikaProcess = () => {
             const fileBytes = await readFile(filepath);
             const magika = new Magika();
             await magika.load({});
-            const prediction = await magika.identifyBytes(fileBytes);
-            prediction.path = filepath;
-            return prediction;
+            const result = await magika.identifyBytes(
+                new Uint16Array(fileBytes.buffer)
+            );
+            return {
+                path: filepath,
+                result: result,
+            };
         } catch (e) {
             console.error(
                 `Error while getting prediction for ${filepath}: ${e}`
